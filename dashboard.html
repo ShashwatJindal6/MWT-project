@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>L3 Schools | Dashboard</title>
+  <link rel="stylesheet" href="background.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="dashboard/dashboard.css">
+</head>
+<body>
+  <div class="bg-container">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+  </div>
+
+  <header class="l3-topbar" id="site-header">
+    <div class="l3-container l3-topbar__inner">
+      <a class="l3-brand" href="index.html" aria-label="L3 Schools home">
+        <span class="l3-brand__text">L3 Schools</span>
+      </a>
+      <nav class="l3-nav" aria-label="Primary">
+        <a class="l3-nav__link" href="index.html">Home</a>
+        <a class="l3-nav__link" href="courses.html">Courses</a>
+        <a class="l3-nav__link" href="login.html">Login</a>
+        <a class="l3-nav__link" href="dashboard.html" aria-current="page">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="l3-dash">
+    <div class="l3-container l3-dash__inner">
+      <header class="l3-dash-welcome">
+        <p class="l3-dash-eyebrow">Workspace</p>
+        <h1 class="l3-dash-title" id="dash-welcome">Welcome back</h1>
+        <p class="l3-dash-lede">Your streak is momentum — open a course and keep building.</p>
+      </header>
+
+      <section class="l3-dash-bento" aria-label="Your stats">
+        <article class="l3-dash-tile l3-dash-tile--stat" style="--i: 0">
+          <span class="l3-dash-tile__label">Enrolled</span>
+          <span class="l3-dash-tile__value" data-target="3">0</span>
+          <span class="l3-dash-tile__hint">courses</span>
+        </article>
+        <article class="l3-dash-tile l3-dash-tile--stat" style="--i: 1">
+          <span class="l3-dash-tile__label">Lessons</span>
+          <span class="l3-dash-tile__value" data-target="12">0</span>
+          <span class="l3-dash-tile__hint">completed</span>
+        </article>
+        <article class="l3-dash-tile l3-dash-tile--stat" style="--i: 2">
+          <span class="l3-dash-tile__label">Certificates</span>
+          <span class="l3-dash-tile__value" data-target="2">0</span>
+          <span class="l3-dash-tile__hint">earned</span>
+        </article>
+        <article class="l3-dash-tile l3-dash-tile--wide" style="--i: 3">
+          <div class="l3-dash-tile--wide__inner">
+            <div>
+              <span class="l3-dash-tile__label">Next up</span>
+              <p class="l3-dash-hero-course">Web development · Module 4</p>
+              <p class="l3-dash-hero-meta">~18 min · 3 exercises left</p>
+            </div>
+            <a class="l3-dash-cta" href="courses.html">Resume</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="l3-dash-courses" aria-labelledby="dash-active">
+        <div class="l3-dash-courses__head">
+          <h2 id="dash-active" class="l3-dash-h2">Active courses</h2>
+          <a class="l3-dash-all" href="courses.html">Browse all</a>
+        </div>
+
+        <div class="l3-dash-rows">
+          <article class="l3-dash-row" style="--i: 0">
+            <div class="l3-dash-row__main">
+              <h3 class="l3-dash-row__title">Web development</h3>
+              <p class="l3-dash-row__sub">HTML, CSS &amp; JS</p>
+            </div>
+            <div class="l3-dash-row__track" role="presentation">
+              <div class="l3-dash-bar" aria-hidden="true">
+                <span class="l3-dash-bar__fill" style="--w: 72"></span>
+              </div>
+              <span class="l3-dash-row__pct">72%</span>
+            </div>
+          </article>
+
+          <article class="l3-dash-row" style="--i: 1">
+            <div class="l3-dash-row__main">
+              <h3 class="l3-dash-row__title">Python programming</h3>
+              <p class="l3-dash-row__sub">Syntax to projects</p>
+            </div>
+            <div class="l3-dash-row__track" role="presentation">
+              <div class="l3-dash-bar" aria-hidden="true">
+                <span class="l3-dash-bar__fill" style="--w: 50"></span>
+              </div>
+              <span class="l3-dash-row__pct">50%</span>
+            </div>
+          </article>
+
+          <article class="l3-dash-row" style="--i: 2">
+            <div class="l3-dash-row__main">
+              <h3 class="l3-dash-row__title">Data structures</h3>
+              <p class="l3-dash-row__sub">Foundations &amp; practice</p>
+            </div>
+            <div class="l3-dash-row__track" role="presentation">
+              <div class="l3-dash-bar" aria-hidden="true">
+                <span class="l3-dash-bar__fill" style="--w: 30"></span>
+              </div>
+              <span class="l3-dash-row__pct">30%</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="l3-dash-foot">
+    <div class="l3-container">
+      <p>© <span id="dash-year"></span> L3 Schools</p>
+    </div>
+  </footer>
+
+  <script src="background.js"></script>
+  <script>
+    (function () {
+      var h = document.getElementById("site-header");
+      function onScroll() {
+        if (h) h.classList.toggle("is-scrolled", window.scrollY > 48);
+      }
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      var y = document.getElementById("dash-year");
+      if (y) y.textContent = String(new Date().getFullYear());
+
+      var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.querySelectorAll(".l3-dash-tile__value[data-target]").forEach(function (el) {
+        if (prefersReduced) {
+          el.textContent = el.getAttribute("data-target");
+          return;
+        }
+        var target = parseInt(el.getAttribute("data-target"), 10);
+        if (isNaN(target)) return;
+        var start = performance.now();
+        var dur = 900;
+        function tick(now) {
+          var t = Math.min(1, (now - start) / dur);
+          var eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = String(Math.round(eased * target));
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    })();
+  </script>
+</body>
+</html>

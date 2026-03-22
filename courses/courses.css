@@ -57,19 +57,12 @@ body{
 .l3-brand{
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
-}
-.l3-brand__mark{
-  width: 14px;
-  height: 14px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, var(--l3-gold), var(--l3-gold-2));
-  box-shadow: 0 0 0 1px rgba(212,175,55,0.25), 0 0 30px rgba(212,175,55,0.25);
 }
 .l3-brand__text{
   font-weight: 800;
   letter-spacing: -0.02em;
+  color: #fff;
 }
 
 .l3-nav{

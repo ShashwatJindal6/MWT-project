@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L3School | edtech project</title>
     <link rel="stylesheet" href="preloader/preloader.css">
+    <script>
+      (function () {
+        try {
+          if (sessionStorage.getItem("l3_preloader_seen") === "1") {
+            document.documentElement.classList.add("l3-preloader-skip");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="background.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="animation1/anim.css">
     <link rel="stylesheet" href="features.css">
-    
 </head>
 
 <body>
-    <div class="preloader">
+    <div class="preloader" aria-hidden="true">
     <div class="mask"></div>
     <div class="list">
         <div class="track">
@@ -32,10 +40,9 @@
         <div id="stars3"></div>
     </div>
 
-    <header class="l3-topbar">
+    <header class="l3-topbar" id="site-header">
     <div class="l3-container l3-topbar__inner">
         <a class="l3-brand" href="index.html" aria-label="L3 Schools home">
-        <span class="l3-brand__mark" aria-hidden="true"></span>
         <span class="l3-brand__text">L3 Schools</span>
         </a>
 
@@ -48,6 +55,13 @@
     </div>
     </header>
 
+    <section class="l3-hero" aria-labelledby="hero-motto">
+      <div class="l3-hero__intro">
+      <h1 id="hero-motto" class="l3-hero-motto">Learn code by writing it — line by line, project by project.</h1>
+      <p class="l3-hero-lede">Practice real programming, get instant feedback, and grow from your first loop to full builds.</p>
+      </div>
+
+    <div class="l3-hero__animation">
     <div class="container">
         <div class="word-column">
             <div class="word" data-target="w1">Welcome</div>
@@ -65,11 +79,26 @@
             <div class="line">function by function untill you're ready to create anything and turning logic into<span id="w5" class="slot"></span>.</div>
         </div>
     </div>
+    </div>
 
-    <script src="animation1/anim.js"></script>
-    <script src="background.js"></script>
-    <script src="preloader/preloader.js"></script>
-</body>
+      <div class="l3-hero-strip" role="group" aria-label="Highlights">
+        <div class="l3-hero-chip">
+          <span class="l3-hero-chip__label">Practice</span>
+          <span class="l3-hero-chip__hint">Run code in the flow</span>
+        </div>
+        <div class="l3-hero-chip">
+          <span class="l3-hero-chip__label">Paths</span>
+          <span class="l3-hero-chip__hint">Structured, no noise</span>
+        </div>
+        <div class="l3-hero-chip">
+          <span class="l3-hero-chip__label">Progress</span>
+          <span class="l3-hero-chip__hint">Skills you can prove</span>
+        </div>
+        <div class="l3-hero-chip l3-hero-chip--cta">
+          <a class="l3-hero-chip__link" href="courses.html">Browse courses →</a>
+        </div>
+      </div>
+    </section>
 
 <section class="l3-section" aria-labelledby="features-title">
   <div class="l3-container">
@@ -159,4 +188,94 @@
   </div>
 </section>
 
+<footer class="l3-site-footer" aria-labelledby="footer-testimonials-title">
+  <div class="l3-container">
+    <section class="l3-testimonials">
+      <header class="l3-testimonials__head">
+        <p class="l3-kicker">Community</p>
+        <h2 id="footer-testimonials-title" class="l3-title">What learners say</h2>
+        <p class="l3-subtitle">Real feedback from people who used the platform.</p>
+      </header>
+      <div class="l3-testimonials__grid" role="list">
+        <figure class="l3-quote" role="listitem">
+          <blockquote class="l3-quote__text">
+            “Finally a place where I can practice without noise. The exercises feel intentional, not random trivia.”
+          </blockquote>
+          <figcaption class="l3-quote__meta">
+            <span class="l3-quote__name">Priya K.</span>
+            <span class="l3-quote__role">Computer science student</span>
+          </figcaption>
+        </figure>
+        <figure class="l3-quote" role="listitem">
+          <blockquote class="l3-quote__text">
+            “Dark UI, clear paths, and feedback that actually helps me fix my mistakes. I keep coming back.”
+          </blockquote>
+          <figcaption class="l3-quote__meta">
+            <span class="l3-quote__name">Marcus T.</span>
+            <span class="l3-quote__role">Self-taught developer</span>
+          </figcaption>
+        </figure>
+        <figure class="l3-quote" role="listitem">
+          <blockquote class="l3-quote__text">
+            “I used it to brush up before interviews. The structure made revision fast without feeling rushed.”
+          </blockquote>
+          <figcaption class="l3-quote__meta">
+            <span class="l3-quote__name">Elena R.</span>
+            <span class="l3-quote__role">Bootcamp graduate</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="l3-footer-meta">
+      <div class="l3-footer-meta__brand">
+        <p class="l3-footer-meta__title">L3 Schools</p>
+        <p class="l3-footer-meta__about">
+          Built by <strong class="l3-footer-meta__creator">Your Name</strong> — an independent edtech project focused on hands-on learning and clean UX. Replace this line with your story or mission.
+        </p>
+      </div>
+
+      <div class="l3-footer-meta__social" aria-label="Social links">
+        <a class="l3-social" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a class="l3-social" href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="l3-social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a class="l3-social" href="mailto:hello@example.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M4 7l8 6 8-6"/></svg>
+        </a>
+      </div>
+
+      <nav class="l3-footer-meta__legal" aria-label="Legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms &amp; conditions</a>
+        <a href="#">Cookie policy</a>
+      </nav>
+    </div>
+
+    <p class="l3-footer-copy">© <span id="footer-year"></span> L3 Schools. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script src="animation1/anim.js"></script>
+    <script src="background.js"></script>
+    <script src="preloader/preloader.js"></script>
+    <script>
+      (function () {
+        var header = document.getElementById("site-header");
+        function onScroll() {
+          if (!header) return;
+          header.classList.toggle("is-scrolled", window.scrollY > 48);
+        }
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        var y = document.getElementById("footer-year");
+        if (y) y.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+</body>
 </html>

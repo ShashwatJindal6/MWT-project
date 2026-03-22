@@ -4,6 +4,11 @@
     box-sizing: border-box;
     font-family: 'Montserrat', 'Poppins', sans-serif, Georgia, 'Times New Roman', Times, serif;
 }
+/* Skip replay when user already saw intro this tab (see preloader.js + index.html) */
+html.l3-preloader-skip .preloader {
+  display: none !important;
+}
+
 .preloader {
   position: fixed;
   inset: 0;

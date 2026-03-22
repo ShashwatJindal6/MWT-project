@@ -5,17 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
   <title>L3 Schools | Login</title>
+  <link rel="stylesheet" href="background.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="features.css">
   <link rel="stylesheet" href="login/style.css">
 </head>
 
-<body>
-  <header class="l3-topbar">
+<body class="l3-login-body">
+  <div class="bg-container">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+  </div>
+
+  <header class="l3-topbar" id="site-header">
     <div class="l3-container l3-topbar__inner">
       <a class="l3-brand" href="index.html" aria-label="L3 Schools home">
-        <span class="l3-brand__mark" aria-hidden="true"></span>
         <span class="l3-brand__text">L3 Schools</span>
       </a>
-
       <nav class="l3-nav" aria-label="Primary">
         <a class="l3-nav__link" href="index.html">Home</a>
         <a class="l3-nav__link" href="courses.html">Courses</a>
@@ -25,19 +32,21 @@
     </div>
   </header>
 
-  <main class="l3-main">
-    <section class="l3-login" aria-labelledby="login-title">
-      <div class="l3-login__card">
-        <header class="l3-login__head">
-          <p class="l3-kicker">Developer-first learning</p>
-          <h1 id="login-title" class="l3-title">Sign in</h1>
-          <p class="l3-subtitle">Access courses and pick up where you left off.</p>
+  <main class="l3-login-main">
+    <div class="l3-container">
+      <div class="l3-login-wrap">
+      <section class="l3-login-shell" aria-labelledby="login-title">
+        <header class="l3-login-shell__head">
+          <p class="l3-kicker">Account</p>
+          <h1 id="login-title" class="l3-title l3-login-title-tune">Sign in</h1>
+          <p class="l3-subtitle">Welcome back — open a course and continue from your last lesson.</p>
         </header>
 
-        <form class="l3-login__form" method="post" action="login_process.php" novalidate>
-          <div class="l3-formRow">
-            <label for="email" class="l3-label">Email</label>
+        <form class="l3-login-form" method="post" action="login_process.php" novalidate>
+          <div class="l3-login-field">
+            <label class="l3-login-label" for="email">Email</label>
             <input
+              class="l3-login-input"
               id="email"
               name="email"
               type="email"
@@ -47,9 +56,13 @@
             />
           </div>
 
-          <div class="l3-formRow">
-            <label for="password" class="l3-label">Password</label>
+          <div class="l3-login-field">
+            <div class="l3-login-labelrow">
+              <label class="l3-login-label" for="password">Password</label>
+              <a class="l3-login-forgot" href="#">Forgot password?</a>
+            </div>
             <input
+              class="l3-login-input"
               id="password"
               name="password"
               type="password"
@@ -59,38 +72,54 @@
             />
           </div>
 
-          <p class="l3-error" id="l3-error" role="alert" aria-live="polite"></p>
+          <p class="l3-login-error" id="l3-error" role="alert" aria-live="polite"></p>
 
-          <div class="l3-actions">
-            <button class="l3-btn" type="submit">Login</button>
-            <a class="l3-link" href="index.html">Back to home</a>
+          <div class="l3-login-actions">
+            <button class="l3-login-btn" type="submit">Sign in</button>
           </div>
-
           <input type="hidden" name="next" value="dashboard.html" />
         </form>
+
+        <footer class="l3-login-shell__foot">
+          <p class="l3-login-footnote">
+            New here? <a href="courses.html">Explore courses</a>
+          </p>
+        </footer>
+      </section>
+
+      <p class="l3-login-back">
+        <a href="index.html">← Back to home</a>
+      </p>
       </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="l3-footer">
-    <p>© 2026 L3 Schools</p>
+  <footer class="l3-login-page-foot">
+    <p>© <span id="login-year"></span> L3 Schools</p>
   </footer>
 
+  <script src="background.js"></script>
   <script>
     (function () {
-      const err = document.getElementById("l3-error");
+      var h = document.getElementById("site-header");
+      function onScroll() {
+        if (h) h.classList.toggle("is-scrolled", window.scrollY > 48);
+      }
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      var y = document.getElementById("login-year");
+      if (y) y.textContent = String(new Date().getFullYear());
+
+      var err = document.getElementById("l3-error");
       if (!err) return;
-
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get("error");
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get("error");
       if (!code) return;
-
-      const map = {
+      var map = {
         invalid: "Invalid email or password.",
         missing: "Please enter your email and password.",
         server: "Something went wrong. Try again."
       };
-
       err.textContent = map[code] || "Login failed. Please try again.";
     })();
   </script>
