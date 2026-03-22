@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L3 Schools | Courses</title>
+  <link rel="stylesheet" href="courses/courses.css" />
+</head>
+
+<body>
+  <header class="l3-topbar">
+    <div class="l3-container l3-topbar__inner">
+      <a class="l3-brand" href="index.html" aria-label="L3 Schools home">
+        <span class="l3-brand__mark" aria-hidden="true"></span>
+        <span class="l3-brand__text">L3 Schools</span>
+      </a>
+
+      <nav class="l3-nav" aria-label="Primary">
+        <a class="l3-nav__link" href="index.html">Home</a>
+        <a class="l3-nav__link" href="courses.html" aria-current="page">Courses</a>
+        <a class="l3-nav__link" href="login.html">Login</a>
+        <a class="l3-nav__link" href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="l3-main">
+    <section class="l3-courses" aria-labelledby="courses-title">
+      <div class="l3-container l3-courses__grid">
+        <div class="l3-categories" role="list" aria-label="Course categories">
+          <h1 id="courses-title" class="l3-page-title">Pick a category. Select your courses.</h1>
+          <p class="l3-page-subtitle">
+            Hover for a premium preview. Click to expand and select multiple courses. Gold accents, smooth motion.
+          </p>
+
+          <article class="l3-cat" role="listitem" data-category="development">
+            <button class="l3-cat__btn" type="button" aria-expanded="false" aria-controls="panel-development">
+              <span class="l3-cat__name">Development</span>
+              <span class="l3-cat__pill" aria-hidden="true">Select</span>
+              <span class="l3-cat__count" data-count-for="development">0 selected</span>
+              <span class="l3-cat__chev" aria-hidden="true"></span>
+            </button>
+
+            <div class="l3-cat__panel" id="panel-development" aria-hidden="true">
+              <div class="l3-cat__list" role="group" aria-label="Development courses">
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="development" value="Python for Beginners" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Python for Beginners</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="development" value="C Fundamentals" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">C Fundamentals</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="development" value="C++ OOP & Clean Code" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">C++ OOP & Clean Code</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="development" value="Algorithms (DSA) with C++" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Algorithms (DSA) with C++</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="development" value="System Design Basics" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">System Design Basics</span>
+                </label>
+              </div>
+            </div>
+          </article>
+
+          <article class="l3-cat" role="listitem" data-category="webdev">
+            <button class="l3-cat__btn" type="button" aria-expanded="false" aria-controls="panel-webdev">
+              <span class="l3-cat__name">Web Development</span>
+              <span class="l3-cat__pill" aria-hidden="true">Select</span>
+              <span class="l3-cat__count" data-count-for="webdev">0 selected</span>
+              <span class="l3-cat__chev" aria-hidden="true"></span>
+            </button>
+
+            <div class="l3-cat__panel" id="panel-webdev" aria-hidden="true">
+              <div class="l3-cat__list" role="group" aria-label="Web Development courses">
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="webdev" value="HTML & CSS Mastery" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">HTML & CSS Mastery</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="webdev" value="JavaScript for Interfaces" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">JavaScript for Interfaces</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="webdev" value="React Fundamentals" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">React Fundamentals</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="webdev" value="API Integration (REST)" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">API Integration (REST)</span>
+                </label>
+              </div>
+            </div>
+          </article>
+
+          <article class="l3-cat" role="listitem" data-category="ai">
+            <button class="l3-cat__btn" type="button" aria-expanded="false" aria-controls="panel-ai">
+              <span class="l3-cat__name">Artificial Intelligence</span>
+              <span class="l3-cat__pill" aria-hidden="true">Select</span>
+              <span class="l3-cat__count" data-count-for="ai">0 selected</span>
+              <span class="l3-cat__chev" aria-hidden="true"></span>
+            </button>
+
+            <div class="l3-cat__panel" id="panel-ai" aria-hidden="true">
+              <div class="l3-cat__list" role="group" aria-label="Artificial Intelligence courses">
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="ai" value="Machine Learning Essentials" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Machine Learning Essentials</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="ai" value="Deep Learning Fundamentals" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Deep Learning Fundamentals</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="ai" value="NLP & Text Models" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">NLP & Text Models</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="ai" value="Computer Vision Basics" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Computer Vision Basics</span>
+                </label>
+              </div>
+            </div>
+          </article>
+
+          <article class="l3-cat" role="listitem" data-category="devops">
+            <button class="l3-cat__btn" type="button" aria-expanded="false" aria-controls="panel-devops">
+              <span class="l3-cat__name">DevOps</span>
+              <span class="l3-cat__pill" aria-hidden="true">Select</span>
+              <span class="l3-cat__count" data-count-for="devops">0 selected</span>
+              <span class="l3-cat__chev" aria-hidden="true"></span>
+            </button>
+
+            <div class="l3-cat__panel" id="panel-devops" aria-hidden="true">
+              <div class="l3-cat__list" role="group" aria-label="DevOps courses">
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="devops" value="CI/CD with Pipelines" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">CI/CD with Pipelines</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="devops" value="Docker Essentials" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Docker Essentials</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="devops" value="Kubernetes Starter" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Kubernetes Starter</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="devops" value="Monitoring & Observability" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Monitoring & Observability</span>
+                </label>
+              </div>
+            </div>
+          </article>
+
+          <article class="l3-cat" role="listitem" data-category="aws">
+            <button class="l3-cat__btn" type="button" aria-expanded="false" aria-controls="panel-aws">
+              <span class="l3-cat__name">AWS Services</span>
+              <span class="l3-cat__pill" aria-hidden="true">Select</span>
+              <span class="l3-cat__count" data-count-for="aws">0 selected</span>
+              <span class="l3-cat__chev" aria-hidden="true"></span>
+            </button>
+
+            <div class="l3-cat__panel" id="panel-aws" aria-hidden="true">
+              <div class="l3-cat__list" role="group" aria-label="AWS Services courses">
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="aws" value="AWS IAM & Access Control" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">AWS IAM & Access Control</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="aws" value="EC2 & Networking Essentials" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">EC2 & Networking Essentials</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="aws" value="S3 Storage & Lifecycle" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">S3 Storage & Lifecycle</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="aws" value="Serverless with Lambda" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">Serverless with Lambda</span>
+                </label>
+
+                <label class="l3-check">
+                  <input type="checkbox" class="l3-course" data-category="aws" value="CloudWatch & Alerts" />
+                  <span class="l3-check__box" aria-hidden="true"></span>
+                  <span class="l3-check__label">CloudWatch & Alerts</span>
+                </label>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="l3-preview" aria-live="polite">
+          <div class="l3-preview__card">
+            <div class="l3-preview__media">
+              <img
+                id="l3-previewImage"
+                class="l3-preview__img"
+                alt="Course category preview"
+                src=""
+              />
+              <div class="l3-preview__glow" aria-hidden="true"></div>
+            </div>
+
+            <div class="l3-preview__content">
+              <p class="l3-preview__kicker">Hover preview</p>
+              <h2 id="l3-previewTitle" class="l3-preview__title">Development</h2>
+              <p id="l3-previewSubtitle" class="l3-preview__subtitle">
+                Practical developer fundamentals with gold-standard structure.
+              </p>
+
+              <div class="l3-selected" role="status">
+                <div class="l3-selected__row">
+                  <span>Selected courses</span>
+                  <strong id="l3-selectedCount">0</strong>
+                </div>
+                <div class="l3-selected__hint">Build your roadmap as you select.</div>
+              </div>
+
+              <div class="l3-preview__actions">
+                <button id="l3-clearBtn" class="l3-btn l3-btn--ghost" type="button">
+                  Clear selection
+                </button>
+                <button id="l3-viewBtn" class="l3-btn" type="button" disabled>
+                  View roadmap
+                </button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="courses/courses.js"></script>
+</body>
+</html>

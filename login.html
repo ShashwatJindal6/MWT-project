@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>L3 Schools | Login</title>
+  <link rel="stylesheet" href="login/style.css">
+</head>
+
+<body>
+  <header class="l3-topbar">
+    <div class="l3-container l3-topbar__inner">
+      <a class="l3-brand" href="index.html" aria-label="L3 Schools home">
+        <span class="l3-brand__mark" aria-hidden="true"></span>
+        <span class="l3-brand__text">L3 Schools</span>
+      </a>
+
+      <nav class="l3-nav" aria-label="Primary">
+        <a class="l3-nav__link" href="index.html">Home</a>
+        <a class="l3-nav__link" href="courses.html">Courses</a>
+        <a class="l3-nav__link" href="login.html" aria-current="page">Login</a>
+        <a class="l3-nav__link" href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="l3-main">
+    <section class="l3-login" aria-labelledby="login-title">
+      <div class="l3-login__card">
+        <header class="l3-login__head">
+          <p class="l3-kicker">Developer-first learning</p>
+          <h1 id="login-title" class="l3-title">Sign in</h1>
+          <p class="l3-subtitle">Access courses and pick up where you left off.</p>
+        </header>
+
+        <form class="l3-login__form" method="post" action="login_process.php" novalidate>
+          <div class="l3-formRow">
+            <label for="email" class="l3-label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="you@domain.com"
+            />
+          </div>
+
+          <div class="l3-formRow">
+            <label for="password" class="l3-label">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              placeholder="Your password"
+            />
+          </div>
+
+          <p class="l3-error" id="l3-error" role="alert" aria-live="polite"></p>
+
+          <div class="l3-actions">
+            <button class="l3-btn" type="submit">Login</button>
+            <a class="l3-link" href="index.html">Back to home</a>
+          </div>
+
+          <input type="hidden" name="next" value="dashboard.html" />
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="l3-footer">
+    <p>© 2026 L3 Schools</p>
+  </footer>
+
+  <script>
+    (function () {
+      const err = document.getElementById("l3-error");
+      if (!err) return;
+
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("error");
+      if (!code) return;
+
+      const map = {
+        invalid: "Invalid email or password.",
+        missing: "Please enter your email and password.",
+        server: "Something went wrong. Try again."
+      };
+
+      err.textContent = map[code] || "Login failed. Please try again.";
+    })();
+  </script>
+</body>
+</html>

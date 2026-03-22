@@ -1,0 +1,181 @@
+/* ===== L3 Schools: Features Section (drop-in) ===== */
+:root{
+  --l3-bg: #07070a;
+  --l3-surface: rgba(255,255,255,0.04);
+  --l3-surface-2: rgba(255,255,255,0.06);
+  --l3-border: rgba(255,255,255,0.10);
+  --l3-text: rgba(255,255,255,0.92);
+  --l3-muted: rgba(255,255,255,0.68);
+  --l3-gold: #d4af37;
+  --l3-gold-2: #f4d77a;
+
+  --l3-radius: 14px;
+  --l3-shadow: 0 14px 40px rgba(0,0,0,0.55);
+  --l3-glow: 0 0 0 1px rgba(212,175,55,0.16), 0 0 40px rgba(212,175,55,0.10);
+
+  --l3-container: 1120px;
+  --l3-ease: cubic-bezier(.22,.61,.36,1);
+}
+
+.l3-section{
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(212,175,55,0.10), transparent 60%),
+              radial-gradient(900px 500px at 90% 10%, rgba(212,175,55,0.06), transparent 55%),
+              var(--l3-bg);
+  color: var(--l3-text);
+  padding: clamp(52px, 7vw, 96px) 0;
+}
+
+.l3-container{
+  width: min(92vw, var(--l3-container));
+  margin: 0 auto;
+}
+
+.l3-section__head{
+  max-width: 72ch;
+}
+
+.l3-kicker{
+  display: inline-block;
+  font: 600 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.88);
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.18);
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.l3-title{
+  margin: 14px 0 8px;
+  font: 700 clamp(26px, 3.2vw, 44px)/1.08 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.l3-subtitle{
+  margin: 0;
+  color: var(--l3-muted);
+  font: 400 clamp(14px, 1.6vw, 18px)/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.l3-features{
+  margin-top: clamp(22px, 3vw, 34px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(12px, 2vw, 18px);
+}
+
+.l3-card{
+  grid-column: span 4;
+  position: relative;
+  padding: 18px 18px 16px;
+  border-radius: var(--l3-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid var(--l3-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  transition: transform 280ms var(--l3-ease), box-shadow 280ms var(--l3-ease), border-color 280ms var(--l3-ease);
+  transform: translateZ(0);
+}
+
+.l3-card::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events:none;
+  opacity: 0;
+  box-shadow: var(--l3-glow);
+  transition: opacity 280ms var(--l3-ease);
+}
+
+.l3-card__icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: rgba(212,175,55,0.92);
+  background: rgba(212,175,55,0.10);
+  border: 1px solid rgba(212,175,55,0.18);
+}
+
+.l3-card__icon svg{
+  width: 22px;
+  height: 22px;
+}
+
+.l3-card__title{
+  margin: 12px 0 6px;
+  font: 650 16px/1.25 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.l3-card__text{
+  margin: 0;
+  color: var(--l3-muted);
+  font: 400 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.l3-card:hover{
+  transform: translateY(-4px);
+  border-color: rgba(212,175,55,0.22);
+  box-shadow: var(--l3-shadow);
+}
+
+.l3-card:hover::before{ opacity: 1; }
+
+.l3-card:focus-within{
+  outline: 3px solid rgba(212,175,55,0.35);
+  outline-offset: 2px;
+}
+
+.l3-section__cta{
+  margin-top: clamp(18px, 3vw, 26px);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.l3-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #111;
+  background: linear-gradient(135deg, var(--l3-gold), var(--l3-gold-2));
+  border: 1px solid rgba(212,175,55,0.35);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.38);
+  transition: transform 220ms var(--l3-ease), filter 220ms var(--l3-ease), box-shadow 220ms var(--l3-ease);
+  font: 650 14px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.l3-btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+.l3-btn:active{ transform: translateY(0px); }
+
+.l3-btn--ghost{
+  background: rgba(255,255,255,0.04);
+  color: var(--l3-text);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: none;
+}
+
+.l3-btn--ghost:hover{
+  border-color: rgba(212,175,55,0.22);
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.12);
+}
+
+@media (max-width: 980px){
+  .l3-card{ grid-column: span 6; }
+}
+
+@media (max-width: 620px){
+  .l3-card{ grid-column: span 12; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .l3-card, .l3-btn{ transition: none; }
+  .l3-card:hover, .l3-btn:hover{ transform: none; }
+}
