@@ -55,7 +55,6 @@ function init() {
       return;
     }
   } catch (e) {
-    /* storage blocked — run preloader */
   }
 
   window.addEventListener("load", () => {

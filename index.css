@@ -2,13 +2,11 @@
   --l3-container: 1120px;
 }
 
-/* Shared with all pages that load index.css */
 .l3-container{
   width: min(92vw, var(--l3-container));
   margin-inline: auto;
 }
 
-/* — Hero (motto + animation + strip) — */
 .l3-hero{
   min-height: 100svh;
   display: flex;
@@ -55,7 +53,6 @@
   text-align: center;
 }
 
-/* Animation sits in a full-width row, biased left (not centered as a block) */
 .l3-hero__animation{
   width: 100%;
   padding-left: clamp(20px, 7vw, 120px);
@@ -241,7 +238,6 @@
   background: rgba(212,175,55,0.10);
 }
 
-/* — Footer (testimonials + meta) — same base as features for a continuous band */
 .l3-site-footer{
   background: #07070a;
   color: rgba(255, 255, 255, 0.92);

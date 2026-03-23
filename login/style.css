@@ -1,4 +1,7 @@
-/* Login — uses features.css for kicker / title / subtitle tokens */
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
 
 .l3-login-body{
   min-height: 100dvh;
@@ -9,11 +12,12 @@
 .l3-login-main{
   flex: 1;
   width: 100%;
-  padding: clamp(20px, 4vw, 36px) 0 clamp(40px, 7vw, 72px);
+  padding-left: clamp(16px, 4vw, 24px);
+  padding-right: clamp(16px, 4vw, 24px);
+  padding: clamp(20px, 4vw, 36px) clamp(16px, 4vw, 24px) clamp(40px, 7vw, 72px);
   box-sizing: border-box;
 }
 
-/* Center card: avoid vw-only asymmetry with scrollbars — wrap is 100% of container */
 .l3-login-wrap{
   width: 100%;
   max-width: 460px;
@@ -93,6 +97,11 @@
 
 .l3-login-forgot:hover{
   color: rgba(212, 175, 55, 0.95);
+}
+
+.l3-login-input,
+.l3-login-btn {
+  box-sizing: border-box;
 }
 
 .l3-login-input{

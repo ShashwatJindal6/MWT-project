@@ -46,7 +46,6 @@
   };
 
   function buildSvg(label, accent, bg) {
-    // Small inline SVG “image” placeholder so the page is self-contained.
     const svg = `
       <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
         <defs>
@@ -89,7 +88,6 @@
     previewTitle.textContent = c.title;
     previewSubtitle.textContent = c.subtitle;
 
-    // Subtle fade for a “premium” feel.
     if (!prefersReduced) {
       previewImage.style.opacity = "0";
       previewImage.style.transition = "opacity 160ms var(--l3-ease)";
@@ -130,7 +128,6 @@
     const btn = cat.querySelector(".l3-cat__btn");
     const panel = cat.querySelector(".l3-cat__panel");
 
-    // Click toggles dropdown
     btn.addEventListener("click", () => {
       const isOpen = cat.classList.contains("is-open");
       cat.classList.toggle("is-open", !isOpen);
@@ -139,12 +136,10 @@
       panel.setAttribute("aria-hidden", String(isOpen));
     });
 
-    // Hover updates preview + triggers hover flow
     cat.addEventListener("mouseenter", () => setPreview(key));
     cat.addEventListener("focusin", () => setPreview(key));
   });
 
-  // Checkbox selection handling
   document.addEventListener("change", (e) => {
     const target = e.target;
     if (!(target instanceof HTMLInputElement)) return;

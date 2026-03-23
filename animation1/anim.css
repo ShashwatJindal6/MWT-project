@@ -1,5 +1,4 @@
 
-/* Main container */
 .container{
   min-height: 100svh;
   display: flex;
@@ -10,7 +9,6 @@
   margin-top: 0;
 }
 
-/* LEFT WORD COLUMN */
 .word-column {
   display: flex;
   flex-direction: column;
@@ -23,7 +21,6 @@
   transition: transform 1s ease, opacity 0.5s;
 }
 
-/* TEXT AREA */
 .text-area {
   font-size: 1.4rem;
   line-height: 2;
@@ -34,11 +31,10 @@
   opacity: 0;
 }
 
-/* FORCE SINGLE LINE */
 .line {
   color: white;
   opacity: 0;
-  white-space: nowrap; /* 🔥 prevents wrapping */
+  white-space: nowrap;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 0.8s ease, opacity 0.4s ease;
 }
