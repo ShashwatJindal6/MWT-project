@@ -24,8 +24,9 @@
       <nav class="l3-nav" aria-label="Primary">
         <a class="l3-nav__link" href="index.html">Home</a>
         <a class="l3-nav__link" href="courses.html">Courses</a>
-        <a class="l3-nav__link" href="login.html">Login</a>
+        <a class="l3-nav__link" href="recommendations.html">Course Advisor</a>
         <a class="l3-nav__link" href="dashboard.html" aria-current="page">Dashboard</a>
+        <a class="l3-nav__link" href="login.html">Login</a>
       </nav>
     </div>
   </header>
@@ -113,6 +114,22 @@
           </article>
         </div>
       </section>
+
+      <section class="l3-dash-courses" aria-labelledby="dash-recommendations">
+        <div class="l3-dash-courses__head">
+          <div>
+            <h2 id="dash-recommendations" class="l3-dash-h2">Fuzzy Recommendations for You</h2>
+            <p style="margin: 4px 0 0; color: rgba(255,255,255,0.6); font-size: 13.5px;">
+              Personalized suggestions computed by the Mamdani Fuzzy Inference Engine based on your learning metrics.
+            </p>
+          </div>
+          <a class="l3-dash-all" href="recommendations.html">Open Course Advisor →</a>
+        </div>
+
+        <div id="dash-fuzzy-list" class="l3-dash-rows">
+          <!-- Populated dynamically by fuzzyEngine -->
+        </div>
+      </section>
     </div>
   </main>
 
@@ -123,6 +140,8 @@
   </footer>
 
   <script src="background.js"></script>
+  <script src="courses/courseData.js"></script>
+  <script src="courses/fuzzyEngine.js"></script>
   <script>
     (function () {
       var h = document.getElementById("site-header");
@@ -133,6 +152,20 @@
       window.addEventListener("scroll", onScroll, { passive: true });
       var y = document.getElementById("dash-year");
       if (y) y.textContent = String(new Date().getFullYear());
+
+      // Sync enrolled stats from localStorage roadmap if present
+      try {
+        var raw = localStorage.getItem("l3_selected_courses");
+        if (raw) {
+          var saved = JSON.parse(raw);
+          if (Array.isArray(saved) && saved.length > 0) {
+            var enrolledStat = document.querySelector(".l3-dash-tile__value[data-target='3']");
+            if (enrolledStat) {
+              enrolledStat.setAttribute("data-target", String(Math.max(3, saved.length)));
+            }
+          }
+        }
+      } catch (e) {}
 
       var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       document.querySelectorAll(".l3-dash-tile__value[data-target]").forEach(function (el) {
@@ -152,6 +185,48 @@
         }
         requestAnimationFrame(tick);
       });
+
+      // Render Top Fuzzy Recommendations on Dashboard
+      if (window.FuzzyRecommendationEngine && window.COURSE_CATALOG) {
+        var studentProfile = {
+          interest: 8.5,
+          skillReadiness: 5.0,
+          academicPerformance: 75
+        };
+
+        var ranked = window.FuzzyRecommendationEngine.recommendCourses(studentProfile, window.COURSE_CATALOG);
+        var container = document.getElementById("dash-fuzzy-list");
+
+        if (container && ranked.length > 0) {
+          var topThree = ranked.slice(0, 3);
+          container.innerHTML = topThree.map(function (item, i) {
+            var c = item.course;
+            var pct = Math.round(item.suitabilityScore);
+            return (
+              '<article class="l3-dash-row" style="--i: ' + i + '">' +
+                '<div class="l3-dash-row__main">' +
+                  '<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">' +
+                    '<span style="font-size: 11px; font-weight: 700; color: #f4d77a; background: rgba(212,175,55,0.14); padding: 2px 6px; border-radius: 4px;">' +
+                      '#' + (i + 1) + ' Fuzzy Match' +
+                    '</span>' +
+                    '<span style="font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase;">' +
+                      c.categoryName + ' · ' + c.difficulty +
+                    '</span>' +
+                  '</div>' +
+                  '<h3 class="l3-dash-row__title">' + c.title + '</h3>' +
+                  '<p class="l3-dash-row__sub" style="margin-top: 4px;">' + item.explanation + '</p>' +
+                '</div>' +
+                '<div class="l3-dash-row__track" role="presentation" style="min-width: 140px;">' +
+                  '<div class="l3-dash-bar" aria-hidden="true">' +
+                    '<span class="l3-dash-bar__fill" style="--w: ' + pct + '"></span>' +
+                  '</div>' +
+                  '<span class="l3-dash-row__pct" style="color: #f4d77a; font-weight: 700;">' + pct + '% match</span>' +
+                '</div>' +
+              '</article>'
+            );
+          }).join("");
+        }
+      }
     })();
   </script>
 </body>

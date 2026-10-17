@@ -17,8 +17,9 @@
       <nav class="l3-nav" aria-label="Primary">
         <a class="l3-nav__link" href="index.html">Home</a>
         <a class="l3-nav__link" href="courses.html" aria-current="page">Courses</a>
-        <a class="l3-nav__link" href="login.html">Login</a>
+        <a class="l3-nav__link" href="recommendations.html">Course Advisor</a>
         <a class="l3-nav__link" href="dashboard.html">Dashboard</a>
+        <a class="l3-nav__link" href="login.html">Login</a>
       </nav>
     </div>
   </header>
@@ -27,6 +28,14 @@
     <section class="l3-courses" aria-labelledby="courses-title">
       <div class="l3-container l3-courses__grid">
         <div class="l3-categories" role="list" aria-label="Course categories">
+          <aside class="l3-advisor-banner" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 18px; margin-bottom: 20px; background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(255,255,255,0.03)); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px;">
+            <div>
+              <strong style="color: #fff; font-size: 14px; display: block; margin-bottom: 2px;">Not sure which courses fit your readiness?</strong>
+              <span style="color: rgba(255,255,255,0.7); font-size: 12.5px;">Let our Mamdani Fuzzy Inference Engine recommend the best path based on your skills and academics.</span>
+            </div>
+            <a href="recommendations.html" class="l3-btn" style="padding: 8px 14px; font-size: 12.5px; text-decoration: none;">Try Course Advisor →</a>
+          </aside>
+
           <h1 id="courses-title" class="l3-page-title">Pick a category. Select your courses.</h1>
           <p class="l3-page-subtitle">
             Hover for a premium preview. Click to expand and select multiple courses. Gold accents, smooth motion.

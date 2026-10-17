@@ -1,12 +1,19 @@
 html {
-  height: 100%;
+  min-height: 100%;
   scrollbar-gutter: stable;
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  background-color: #090a0f;
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background: transparent;
+}
+
 html.is-loading,
-body.is-loading{
+body.is-loading {
   overflow-x: hidden;
 }
 
@@ -15,6 +22,10 @@ body.is-loading{
   inset: 0;
   z-index: -1;
   overflow: hidden;
+  background: radial-gradient(ellipse at 50% 100%, #17212e 0%, #090a0f 85%);
+  background-attachment: fixed;
+  background-size: cover;
+  pointer-events: none;
 }
 
 #stars, #stars2, #stars3 {

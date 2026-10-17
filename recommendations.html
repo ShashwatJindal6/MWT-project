@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>L3 Schools | Fuzzy Course Advisor</title>
+  <link rel="stylesheet" href="background.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="recommendations.css">
+</head>
+
+<body>
+  <div class="bg-container">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+  </div>
+
+  <header class="l3-topbar" id="site-header">
+    <div class="l3-container l3-topbar__inner">
+      <a class="l3-brand" href="index.html" aria-label="L3 Schools home">
+        <span class="l3-brand__text">L3 Schools</span>
+      </a>
+
+      <nav class="l3-nav" aria-label="Primary">
+        <a class="l3-nav__link" href="index.html">Home</a>
+        <a class="l3-nav__link" href="courses.html">Courses</a>
+        <a class="l3-nav__link" href="recommendations.html" aria-current="page">Course Advisor</a>
+        <a class="l3-nav__link" href="dashboard.html">Dashboard</a>
+        <a class="l3-nav__link" href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="l3-advisor-page">
+    <div class="l3-container">
+      <header class="l3-advisor-header">
+        <span class="l3-kicker">Fuzzy Logic Course Advisor</span>
+        <h1 class="l3-title">Intelligent Course Recommendations</h1>
+        <p class="l3-subtitle">
+          Driven by a Mamdani Fuzzy Inference System (FIS). Adjust your profile inputs below to generate explainable course suitability scores via Centroid defuzzification.
+        </p>
+      </header>
+
+      <!-- Viva Demonstration Diagnostics: Real-time Fuzzification Bar Panel -->
+      <section class="l3-viva-panel" aria-label="Fuzzy Inference Diagnostics">
+        <h2 class="l3-viva-title">Fuzzy Membership Degrees [μ(x)]</h2>
+        <p class="l3-viva-desc">
+          Live fuzzification of your inputs into overlapping triangular and trapezoidal membership sets before rule firing:
+        </p>
+
+        <div class="l3-fuzzy-bars">
+          <div class="l3-fuzzy-bar-group">
+            <div class="l3-fuzzy-bar-title">Domain Interest Sets</div>
+            <div id="l3-viva-interest-bars"></div>
+          </div>
+          <div class="l3-fuzzy-bar-group">
+            <div class="l3-fuzzy-bar-title">Skill Readiness Sets</div>
+            <div id="l3-viva-readiness-bars"></div>
+          </div>
+          <div class="l3-fuzzy-bar-group">
+            <div class="l3-fuzzy-bar-title">Academic Standing Sets</div>
+            <div id="l3-viva-academic-bars"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="l3-advisor-layout">
+        <!-- Left: Student Preference Inputs & Preset Academic Profiles -->
+        <aside class="l3-advisor-panel" aria-label="Student Profile Controls">
+          <h2 class="l3-panel-title">Student Profile</h2>
+          <p class="l3-panel-desc">Configure your readiness metrics or select a test scenario to evaluate suitability.</p>
+
+          <form id="l3-advisor-form" onsubmit="return false;">
+            <!-- Domain Selection -->
+            <div class="l3-select-wrap">
+              <label class="l3-input-label" for="l3-select-category" style="display: block; margin-bottom: 8px;">Target Domain Focus</label>
+              <select class="l3-select" id="l3-select-category" name="category">
+                <option value="all">All Domains (Comprehensive Evaluation)</option>
+                <option value="development">Development (Python, C, C++, DSA, Systems)</option>
+                <option value="webdev">Web Development (HTML/CSS, JS, React, REST)</option>
+                <option value="ai">Artificial Intelligence (ML, Deep Learning, NLP, Vision)</option>
+                <option value="devops">DevOps (CI/CD, Docker, Kubernetes, Monitoring)</option>
+                <option value="aws">AWS Cloud (IAM, EC2, S3, Lambda, CloudWatch)</option>
+              </select>
+            </div>
+
+            <!-- Subject Interest Slider (0-10) -->
+            <div class="l3-input-group">
+              <div class="l3-input-labelrow">
+                <label class="l3-input-label" for="l3-slider-interest">Subject Interest</label>
+                <span class="l3-input-badge" id="l3-val-interest">8.5</span>
+              </div>
+              <input
+                type="range"
+                class="l3-range-slider"
+                id="l3-slider-interest"
+                name="interest"
+                min="0"
+                max="10"
+                step="0.5"
+                value="8.5"
+                aria-valuemin="0"
+                aria-valuemax="10"
+                aria-valuenow="8.5"
+              />
+              <div class="l3-input-meta">
+                <span>0 (Casual Curiosity)</span>
+                <span>5 (Engaged)</span>
+                <span>10 (High Passion)</span>
+              </div>
+            </div>
+
+            <!-- Skill Readiness Slider (0-10) -->
+            <div class="l3-input-group">
+              <div class="l3-input-labelrow">
+                <label class="l3-input-label" for="l3-slider-readiness">Current Skill Readiness</label>
+                <span class="l3-input-badge" id="l3-val-readiness">5.0</span>
+              </div>
+              <input
+                type="range"
+                class="l3-range-slider"
+                id="l3-slider-readiness"
+                name="readiness"
+                min="0"
+                max="10"
+                step="0.5"
+                value="5.0"
+                aria-valuemin="0"
+                aria-valuemax="10"
+                aria-valuenow="5.0"
+              />
+              <div class="l3-input-meta">
+                <span>0 (Novice)</span>
+                <span>5 (Intermediate)</span>
+                <span>10 (Advanced)</span>
+              </div>
+              <span class="l3-input-qualifier" id="l3-qualifier-readiness">
+                Intermediate / Competent — Ready for applied project courses
+              </span>
+            </div>
+
+            <!-- Academic Performance Slider (0-100) -->
+            <div class="l3-input-group">
+              <div class="l3-input-labelrow">
+                <label class="l3-input-label" for="l3-slider-academic">Academic Performance</label>
+                <span class="l3-input-badge" id="l3-val-academic">75%</span>
+              </div>
+              <input
+                type="range"
+                class="l3-range-slider"
+                id="l3-slider-academic"
+                name="academic"
+                min="0"
+                max="100"
+                step="1"
+                value="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="75"
+              />
+              <div class="l3-input-meta">
+                <span>0% (Foundational)</span>
+                <span>65% (Average)</span>
+                <span>100% (High Standing)</span>
+              </div>
+              <span class="l3-input-qualifier" id="l3-qualifier-academic">
+                Average Standing — Solid balance of concepts and application
+              </span>
+            </div>
+          </form>
+
+          <!-- College Viva / Demo Presets -->
+          <div class="l3-presets-section">
+            <h3 class="l3-presets-title">Demo Test Profiles (Viva Scenarios)</h3>
+            <div class="l3-preset-grid">
+              <button class="l3-preset-btn" type="button" data-preset="beginner">
+                <span>Absolute Beginner (Novice)</span>
+                <span class="l3-preset-badge">Int 9 · Rdy 1.5</span>
+              </button>
+              <button class="l3-preset-btn is-active" type="button" data-preset="sophomore">
+                <span>CS Sophomore (Intermediate)</span>
+                <span class="l3-preset-badge">Int 8.5 · Rdy 5.5</span>
+              </button>
+              <button class="l3-preset-btn" type="button" data-preset="webdev">
+                <span>Self-Taught Web Developer</span>
+                <span class="l3-preset-badge">Int 9 · Web Focus</span>
+              </button>
+              <button class="l3-preset-btn" type="button" data-preset="ai_aspirant">
+                <span>Advanced AI / Systems Aspirant</span>
+                <span class="l3-preset-badge">Int 9.5 · Rdy 8.5</span>
+              </button>
+              <button class="l3-preset-btn" type="button" data-preset="transitioner">
+                <span>Career Transitioner (Non-CS)</span>
+                <span class="l3-preset-badge">Int 7.5 · Rdy 1.0</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right: Results & Explanations -->
+        <section class="l3-advisor-results" aria-labelledby="results-title">
+          <div class="l3-results-header">
+            <div>
+              <h2 id="results-title" class="l3-panel-title" style="margin-bottom: 2px;">Fuzzy Recommendation Results</h2>
+              <div class="l3-results-count" id="l3-results-count">Showing <span>22</span> recommended courses</div>
+            </div>
+
+            <div class="l3-filter-tabs" role="tablist" aria-label="Course difficulty filter">
+              <button class="l3-filter-tab is-active" role="tab" type="button" data-diff="all" aria-selected="true">All</button>
+              <button class="l3-filter-tab" role="tab" type="button" data-diff="beginner" aria-selected="false">Beginner</button>
+              <button class="l3-filter-tab" role="tab" type="button" data-diff="intermediate" aria-selected="false">Intermediate</button>
+              <button class="l3-filter-tab" role="tab" type="button" data-diff="advanced" aria-selected="false">Advanced</button>
+            </div>
+          </div>
+
+          <!-- Cards container -->
+          <div class="l3-rec-list" id="l3-results-list" role="list"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="l3-dash-foot" style="border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0; margin-top: 60px;">
+    <div class="l3-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+      <p style="margin: 0; color: rgba(255,255,255,0.6); font-size: 13px;">
+        © <span id="advisor-year"></span> L3 Schools • Fuzzy Student Course Recommendation System
+      </p>
+      <nav style="display: flex; gap: 18px; font-size: 13px;">
+        <a href="courses.html" style="color: rgba(212,175,55,0.85); text-decoration: none;">Course Catalog</a>
+        <a href="dashboard.html" style="color: rgba(212,175,55,0.85); text-decoration: none;">Student Dashboard</a>
+        <a href="index.html" style="color: rgba(212,175,55,0.85); text-decoration: none;">Home</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="background.js"></script>
+  <script src="courses/courseData.js"></script>
+  <script src="courses/fuzzyEngine.js"></script>
+  <script src="recommendations.js"></script>
+  <script>
+    (function () {
+      var header = document.getElementById("site-header");
+      function onScroll() {
+        if (!header) return;
+        header.classList.toggle("is-scrolled", window.scrollY > 48);
+      }
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      var y = document.getElementById("advisor-year");
+      if (y) y.textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>

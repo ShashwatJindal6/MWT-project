@@ -66,8 +66,8 @@
   position: relative;
   padding: 20px 18px;
   border-radius: var(--l3-dash-radius);
-  border: 1px solid rgba(255,255,255,0.09);
-  background: linear-gradient(180deg, rgba(255,255,255,0.055), var(--l3-dash-surface));
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
   overflow: hidden;
   animation: l3-dash-rise 0.65s var(--l3-dash-ease) both;
   animation-delay: calc(0.08s + var(--i, 0) * 0.07s);
@@ -115,8 +115,8 @@
 .l3-dash-tile--wide{
   grid-column: 1 / -1;
   padding: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), var(--l3-dash-surface));
-  border-color: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255,255,255,0.08);
 }
 
 @media (min-width: 900px){

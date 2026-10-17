@@ -102,6 +102,18 @@
     }
   }
 
+  function syncFromStorage() {
+    try {
+      const raw = localStorage.getItem("l3_selected_courses");
+      if (raw) {
+        const set = new Set(JSON.parse(raw));
+        document.querySelectorAll(".l3-course").forEach((cb) => {
+          if (set.has(cb.value)) cb.checked = true;
+        });
+      }
+    } catch (e) {}
+  }
+
   function updateCounts() {
     const checkboxes = Array.from(document.querySelectorAll(".l3-course"));
     const selected = checkboxes.filter((cb) => cb.checked);
@@ -121,6 +133,12 @@
     }
 
     viewBtn.disabled = selected.length === 0;
+
+    // Persist to localStorage for site-wide roadmap sync
+    try {
+      const values = selected.map((cb) => cb.value);
+      localStorage.setItem("l3_selected_courses", JSON.stringify(values));
+    } catch (e) {}
   }
 
   cats.forEach((cat) => {
@@ -157,11 +175,11 @@
 
   viewBtn.addEventListener("click", () => {
     const selected = Array.from(document.querySelectorAll(".l3-course:checked")).map((cb) => cb.value);
-    // Production option: redirect with query string, or route to a “roadmap” page.
-    // Keeping it minimal and safe:
-    alert(`Your roadmap:\n\n${selected.join("\n")}`);
+    if (selected.length === 0) return;
+    window.location.href = "dashboard.html";
   });
 
+  syncFromStorage();
   setPreview("development");
   updateCounts();
 })();
